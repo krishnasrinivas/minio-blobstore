@@ -1,0 +1,116 @@
+---
+description: Minio Internal Blobstore for PCF
+icon_image: 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
+label: Minio Internal Blobstore for PCF
+metadata_version: '1.8'
+minimum_version_for_upgrade: 1.0.0
+name: minio-internal-blobstore
+product_version: 1.0.3
+rank: 1
+requires_product_versions: null
+serial: true
+service_broker: false
+
+releases:
+- file: minio-boshrelease-2018-11-30T03-56-59Z.tgz
+  name: minio
+  version: '2018-11-30T03-56-59Z'
+
+stemcell_criteria:
+  os: ubuntu-xenial
+  requires_cpi: false
+  version: '97.18'
+
+property_blueprints:
+- name: ips
+  type: network_address_list
+  configurable: true
+- name: accesskey
+  configurable: true
+  optional: false
+  type: string
+  default: minio
+  constraints:
+    - must_match_regex: '[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]+'
+      error_message: 'AccessKey should be of minimum of 5 alpha-numeric characters.'
+- name: secretkey
+  configurable: true
+  optional: false
+  type: secret
+
+form_types:
+- property_inputs:
+  name: config_form
+  label: 'Configure Credentials'
+  description: 'Configure Credentials'
+  property_inputs:
+    - reference: .properties.accesskey
+      label: 'Configure AccessKey (Should be minimum of 5 characters)'
+    - reference: .properties.secretkey
+      label: 'Configure SecretKey (Should be minimum of 8 characters)'
+- property_inputs:
+  name: static_ips_form
+  label: 'Configure IPs'
+  description: 'Configure IPs'
+  property_inputs:
+    - reference: .properties.ips
+      label: 'Configure IPs'
+
+job_types:
+- dynamic_ip: 0
+  max_in_flight: 1
+  name: minio-server
+  manifest: |
+    credential:
+      accesskey: (( .properties.accesskey.value ))
+      secretkey: (( .properties.secretkey.value ))
+    pcf_tile_version: internal-blobstore-1.0.2
+  instance_definition:
+    type: integer
+    default: 4
+    configurable: true
+    constraints:
+      freeze_on_deploy: true
+      max: 16
+      even: true
+  resource_definitions:
+  - configurable: true
+    constraints:
+      min: 8192
+    default: 16384
+    name: ram
+    type: integer
+  - configurable: true
+    constraints:
+      min: 4096
+    default: 4096
+    name: ephemeral_disk
+    type: integer
+  - configurable: true
+    constraints:
+      min: 40960
+    default: 1024000
+    name: persistent_disk
+    type: integer
+  - configurable: true
+    constraints:
+      min: 2
+    default: 4
+    name: cpu
+    type: integer
+  resource_label: minio-server
+  single_az_only: false
+  static_ip: 1
+  templates:
+  - name: minio-server
+    release: minio
+  networks:
+  - name: minio-networks
+    static_ips: [(( .properties.ips.parsed_network_addresses ))]
+
+update:
+  canaries: 1
+  canary_watch_time: 10000-100000
+  max_in_flight: 1
+  update_watch_time: 10000-100000
+

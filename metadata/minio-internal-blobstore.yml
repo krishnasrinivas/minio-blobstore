@@ -5,7 +5,7 @@ label: Minio Internal Blobstore for PCF
 metadata_version: '1.8'
 minimum_version_for_upgrade: 1.0.0
 name: minio-internal-blobstore
-product_version: 1.0.3
+product_version: 1.0.4
 rank: 1
 requires_product_versions: null
 serial: true
@@ -53,13 +53,13 @@ form_types:
   label: 'Configure IPs'
   description: 'Configure IPs'
   property_inputs:
-    - reference: .properties.ips
+    - reference: ".minioserver.static_ips"
       label: 'Configure IPs'
 
 job_types:
 - dynamic_ip: 0
   max_in_flight: 1
-  name: minio-server
+  name: minioserver
   manifest: |
     credential:
       accesskey: (( .properties.accesskey.value ))
@@ -104,9 +104,13 @@ job_types:
   templates:
   - name: minio-server
     release: minio
-  networks:
-  - name: minio-networks
-    static_ips: [(( .properties.ips.parsed_network_addresses ))]
+  property_blueprints:
+  - name: static_ips
+    type: ip_ranges
+    configurable: true
+    optional: true
+    freeze_on_deploy: false
+    unique: false
 
 update:
   canaries: 1
